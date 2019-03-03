@@ -1,5 +1,10 @@
 # Big data computing and analysis
 
+## User Story
+
+- Mr.K is a large supermarket owner. He needs to manage thousands of different merchandise, and manually computing the sales and profit is hard to optimize the best solution of importing new goods. With the big data system, it is easy to find out what to import at certain time can gain the best value and bring the most profit for him.
+- Mr.News owns a magazine company. He focus on the new trend of fashion and wants to grab the new trend so the content of the magazine will not be out of date. With the big data, he is able to find out where the trends are precisely and quickly.
+
 ## Purpose
 
 1. Get stream data from the Internet
