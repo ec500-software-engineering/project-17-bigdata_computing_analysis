@@ -18,6 +18,8 @@ https://github.com/ec500-software-engineering/project-bigdata_computing_analysis
 5. Store the results in the relational database like MySQL
 6. Show the visualization results using technologies like SSM
 
+![MapReduce](https://github.com/ec500-software-engineering/project-bigdata_computing_analysis/blob/master/documentation/readme/map_reduce_eg.png)
+
 ## Architecture
 
 ![Structure](https://github.com/ec500-software-engineering/project-bigdata_computing_analysis/blob/master/documentation/readme/structure.png)
