@@ -47,3 +47,9 @@ Choose the query tab, you can find the dataset uploaded in the leftside, and in 
 Choose the visualization tab on the right hand, it is very easy to visualize. Choose movie_id as x and ratingcount as y, you can get the result
 
 ![ambari_query_ui](https://github.com/ec500-software-engineering/project-bigdata_computing_analysis/blob/master/documentation/sprint1/visual.png)
+
+## Without GUI
+
+Use ssh maria@127.0.0.1 -p 2222 to access the virtual machine, and you can use the command line to control the hadoop
+
+![no_ui](https://github.com/ec500-software-engineering/project-bigdata_computing_analysis/blob/master/documentation/sprint1/without_gui.png)
