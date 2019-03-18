@@ -1,5 +1,9 @@
 # Big data computing and analysis
 
+#### Sprint 1:
+
+https://github.com/ec500-software-engineering/project-bigdata_computing_analysis/blob/master/Sprint%201/readme.md
+
 ## User Story
 
 - Mr.K is a large supermarket owner. He needs to manage thousands of different merchandise, and manually computing the sales and profit is hard to optimize the best solution of importing new goods. With the big data system, it is easy to find out what to import at certain time can gain the best value and bring the most profit for him.
