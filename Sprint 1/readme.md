@@ -15,6 +15,9 @@ This is a image built for hadoop. Even though there are newer versions of the Ho
 ### Setting up KafKa
 Download Link: https://kafka.apache.org/quickstart
 
+### Kafka Demo
+Link: https://kafka.apache.org/21/documentation/streams/quickstart
+
 ### Dataset
 
 Download Link: http://files.grouplens.org/datasets/movielens/ml-100k.zip
