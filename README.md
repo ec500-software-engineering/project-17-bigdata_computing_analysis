@@ -16,7 +16,7 @@
 
 ## Architecture
 
-![Structure](https://github.com/ec500-software-engineering/project-bigdata_computing_analysis/blob/master/images/structure.png)
+![Structure](https://github.com/ec500-software-engineering/project-bigdata_computing_analysis/blob/master/documentation/readme/structure.png)
 
 
 ## Sprint 1
@@ -29,10 +29,10 @@
 
 Kafka® is used for building real-time data pipelines and streaming apps. It is horizontally scalable, fault-tolerant, wicked fast, and runs in production in thousands of companies.
 
-![Structure](https://github.com/ec500-software-engineering/project-bigdata_computing_analysis/blob/master/images/kafka-apis.png)
+![Structure](https://github.com/ec500-software-engineering/project-bigdata_computing_analysis/blob/master/documentation/readme/kafka-apis.png)
 
 ## Flume
 
 Flume is a distributed, reliable, and available service for efficiently collecting, aggregating, and moving large amounts of log data. It has a simple and flexible architecture based on streaming data flows. It is robust and fault tolerant with tunable reliability mechanisms and many failover and recovery mechanisms. It uses a simple extensible data model that allows for online analytic application.
 
-![Structure](https://github.com/ec500-software-engineering/project-bigdata_computing_analysis/blob/master/images/flume.png)
+![Structure](https://github.com/ec500-software-engineering/project-bigdata_computing_analysis/blob/master/documentation/readme/flume.png)
