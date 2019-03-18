@@ -22,3 +22,5 @@ After using the ova file creat the virtual machine, you can use your local brows
 
 ![ambari_signin](https://github.com/ec500-software-engineering/project-bigdata_computing_analysis/blob/master/documentation/sprint1/signin_ambari.png)
 
+![ambari_signin](https://github.com/ec500-software-engineering/project-bigdata_computing_analysis/blob/master/documentation/sprint1/ambari.png)
+
