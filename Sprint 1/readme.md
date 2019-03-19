@@ -80,8 +80,34 @@ but in HDP 2.5, you have to first type
 cd /etc/yum.repos.d
 cp sandbox.repo /tmp
 rm sandbox.repo
+cd ~
 yum install python-pip
 ```
 
+```bash
+pip install google-api-python-client==1.6.4
+pip install mrjob==0.5.11
+yum install nano
+```
 
+### Simple MapReduce example
 
+Get the dataset from:
+
+```
+wget http://media.sundog-soft.com/hadoop/ml-100k/u.data
+```
+
+Get the mapreduce script from:
+
+```
+wget http://media.sundog-soft.com/hadoop/RatingsBreakdown.py
+```
+
+Run the hadoop MapReduce job:
+
+```bash
+python RatingsBreakdown.py -r hadoop --hadoop-streaming-jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar u.data
+```
+
+![mapreduce](https://github.com/ec500-software-engineering/project-bigdata_computing_analysis/blob/master/documentation/sprint1/MapReduce.png)
