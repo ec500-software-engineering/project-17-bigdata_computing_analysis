@@ -112,7 +112,7 @@ python RatingsBreakdown.py -r hadoop --hadoop-streaming-jar /usr/hdp/current/had
 
 ![mapreduce](https://github.com/ec500-software-engineering/project-bigdata_computing_analysis/blob/master/documentation/sprint1/MapReduce.png)
 
-You can use an advanced version so it shows the count of the movie as the first column. You can download the script here:
+You can use an advanced version so it shows the movie sorted by the count. You can download the script here:
 
 ```bash
 wget http://media.sundog-soft.com/hadoop/TopMovies.py
@@ -124,3 +124,10 @@ and then try the script locally:
 python TopMovies.py u.data
 ```
 
+or start a new MapReduce job in hadoop:
+
+```bash
+python TopMovies.py -r hadoop --hadoop-streaming-jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar u.data
+```
+
+![mapreduce2](https://github.com/ec500-software-engineering/project-bigdata_computing_analysis/blob/master/documentation/sprint1/MapReduce2.png)
