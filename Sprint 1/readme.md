@@ -24,7 +24,9 @@ Download Link: http://files.grouplens.org/datasets/movielens/ml-100k.zip
 
 ## Introduction to Hadoop
 
-### Login in to Ambari
+### Ambari
+
+#### Login in to Ambari
 
 After using the ova file creat the virtual machine, you can use your local browser to enter 127.0.0.1:8888, and both the Username and Password are maria_dev
 
@@ -32,7 +34,7 @@ After using the ova file creat the virtual machine, you can use your local brows
 
 ![ambari_signin](https://github.com/ec500-software-engineering/project-bigdata_computing_analysis/blob/master/documentation/sprint1/ambari.png)
 
-### Built in upload function
+#### Built in upload function
 
 We can try to use the Hive View function and choose the upload file, in the settings we choose field delimiter as 9 TAB(horizontal tab), and then we choose the local file u.data, set the table name as "ratings", each column as "user_id", "movie_id", "rating" and "rating_time"
 
@@ -42,19 +44,19 @@ To set the delimiter to "124 |", and then upload u.item, call the table movie_na
 
 ![ambari_upload_gui1](https://github.com/ec500-software-engineering/project-bigdata_computing_analysis/blob/master/documentation/sprint1/upload_gui1.png)
 
-### Built in Query
+#### Built in Query
 
 Choose the query tab, you can find the dataset uploaded in the leftside, and in the query editor you can add sql language, eg.
 
 ![ambari_query_ui](https://github.com/ec500-software-engineering/project-bigdata_computing_analysis/blob/master/documentation/sprint1/query_gui.png)
 
-### Visualization
+#### Visualization
 
 Choose the visualization tab on the right hand, it is very easy to visualize. Choose movie_id as x and ratingcount as y, you can get the result
 
 ![ambari_query_ui](https://github.com/ec500-software-engineering/project-bigdata_computing_analysis/blob/master/documentation/sprint1/visual.png)
 
-## Without GUI
+### Commandline control
 
 Use ssh maria@127.0.0.1 -p 2222 to access the virtual machine, and you can use the command line to control the hadoop
 
@@ -90,7 +92,7 @@ pip install mrjob==0.5.11
 yum install nano
 ```
 
-### Simple MapReduce example
+#### Simple MapReduce example
 
 Get the dataset from:
 
