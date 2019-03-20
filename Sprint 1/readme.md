@@ -34,6 +34,21 @@ After using the ova file creat the virtual machine, you can use your local brows
 
 ![ambari_signin](https://github.com/ec500-software-engineering/project-bigdata_computing_analysis/blob/master/documentation/sprint1/ambari.png)
 
+#### Admin password reset
+
+If you want to use the admin account, you have to reset the password first.
+
+Due to possibility of passwords being vulnerable to being hacked, we recommend
+you change your Ambari admin password to be unique.
+
+1. Open [Shell Web Client](http://sandbox-hdp.hortonworks.com:4200/) (aka Shell-in-a-Box):
+2. The login using credentials: **root** / **hadoop**
+3. Type the following commands: `ambari-admin-password-reset`
+
+> IMPORTANT: The first time you login as **root**, you may be required to change the password – remember it!
+
+This is not the reset for the password of the virtual machine! This is only the Ambari password change.
+
 #### Built in upload function
 
 We can try to use the Hive View function and choose the upload file, in the settings we choose field delimiter as 9 TAB(horizontal tab), and then we choose the local file u.data, set the table name as "ratings", each column as "user_id", "movie_id", "rating" and "rating_time"
@@ -56,9 +71,11 @@ Choose the visualization tab on the right hand, it is very easy to visualize. Ch
 
 ![ambari_query_ui](https://github.com/ec500-software-engineering/project-bigdata_computing_analysis/blob/master/documentation/sprint1/visual.png)
 
-### Commandline control
+### MapReduce 
 
-Use ssh maria@127.0.0.1 -p 2222 to access the virtual machine, and you can use the command line to control the hadoop
+#### Prerequisites
+
+Use ssh maria@127.0.0.1 -p 2222 to access the virtual machine (if you are using windows please download PUTTY or xshell etc.), and you can use the command line to control the hadoop
 
 ![no_ui](https://github.com/ec500-software-engineering/project-bigdata_computing_analysis/blob/master/documentation/sprint1/without_gui.png)
 
@@ -133,3 +150,13 @@ python TopMovies.py -r hadoop --hadoop-streaming-jar /usr/hdp/current/hadoop-map
 ```
 
 ![mapreduce2](https://github.com/ec500-software-engineering/project-bigdata_computing_analysis/blob/master/documentation/sprint1/MapReduce2.png)
+
+### Pig
+
+#### Why Pig?
+
+- Writing mappers and reducers by hand takes a long time
+- Pig introduces Pig Latin, a scripting language that lets you use SQL-like syntax to define your map and reduce steps
+- Highly extensible with user-defined functions (UDF's)
+
+![pig_structure](https://github.com/ec500-software-engineering/project-bigdata_computing_analysis/blob/master/documentation/sprint1/pig_structure.png)

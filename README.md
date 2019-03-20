@@ -31,7 +31,11 @@ https://github.com/ec500-software-engineering/project-bigdata_computing_analysis
 
 - Study basic concepts and usages of big data tools like Kafka, HBase and Flume 
 - Build the input data stream 
-- Handle input stream with kafka and flume.
+- Handle input stream with HDFS.
+
+## HDFS
+
+The Hadoop Distributed File System (HDFS) is a distributed file system designed to run on commodity hardware. It has many similarities with existing distributed file systems. However, the differences from other distributed file systems are significant. HDFS is highly fault-tolerant and is designed to be deployed on low-cost hardware. HDFS provides high throughput access to application data and is suitable for applications that have large data sets. HDFS relaxes a few POSIX requirements to enable streaming access to file system data. 
 
 ## Kafka
 
