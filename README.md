@@ -1,6 +1,8 @@
 # Big data computing and analysis
 
-#### Sprint 1:
+[![Build Status](https://travis-ci.com/ec500-software-engineering/project-17-bigdata_computing_analysis.svg?branch=master)](https://travis-ci.com/ec500-software-engineering/project-17-bigdata_computing_analysis)
+
+## Sprint 1:
 
 https://github.com/ec500-software-engineering/project-bigdata_computing_analysis/blob/master/Sprint%201/readme.md
 
