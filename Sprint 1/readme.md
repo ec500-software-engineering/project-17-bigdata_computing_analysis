@@ -167,7 +167,7 @@ Firstly use the files view tab to upload u.data and u.item into the ml-100k fold
 
 Then choose the Pig View, and use the script below to find the oldest five star movies.
 
-```sql
+```pig
 ratings = LOAD '/user/maria_dev/ml-100k/u.data' AS (userID:int, movieID:int, rating:int, ratingTime: int);
 
 metadata = LOAD '/user/maria_dev/ml-100k/u.item' USING PigStorage('|')
