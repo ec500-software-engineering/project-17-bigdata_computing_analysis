@@ -194,3 +194,78 @@ DUMP oldestFiveStarMovies;
 Then execute:
 
 ![pig_res](https://github.com/ec500-software-engineering/project-bigdata_computing_analysis/blob/master/documentation/sprint1/pig_res.png)
+
+You can try to run Pig on Tez. Tez uses what's called a directed acyclic graph to actually analyze all the interrelationships between the different steps that you;re doing and try to figure out the most optimal path for excuting things.
+
+Click on the Execute on Tez button and the result is almost ten times faster.
+
+#### Eg2
+
+```pig
+ratings = LOAD '/user/maria_dev/ml-100k/u.data' AS (userID:int, movieID:int, rating:int, ratingTime: int);
+
+metadata = LOAD '/user/maria_dev/ml-100k/u.item' USING PigStorage('|')
+	AS (movieID:int, movieTitle:chararray, releaseDate:chararray, videoRelease:chararray, imdbLink:chararray);
+
+nameLookup = FOREACH metadata GENERATE movieID, movieTitle;
+
+groupedRatings = GROUP ratings BY movieID;
+
+averageRatings = FOREACH groupedRatings GENERATE group AS movieID,
+	AVG(ratings.rating) AS avgRating, COUNT(ratings.rating) AS numRatings;
+    
+badMovies = FILTER averageRatings BY avgRating < 2.0;
+
+namedBadMovies = JOIN badMovies BY movieID, nameLookup BY movieID;
+
+res = FOREACH namedBadMovies GENERATE nameLookup::movieTitle AS movieName,
+	badMovies::avgRating AS avgRating, badMovies::numRatings AS numRatings;
+
+resSorted = ORDER res BY numRatings DESC;
+
+DUMP resSorted;
+```
+
+![pig_res2](https://github.com/ec500-software-engineering/project-bigdata_computing_analysis/blob/master/documentation/sprint1/pig_res2.png)
+
+#### Pig Latin
+
+##### Relation
+
+```pig
+LOAD STORE DUMP
+FILTER DISTINCT FOREACH/GENERATE MAPREDUCE STREAM SAMPLE
+JOIN COGROUP GROUP CROSS CUBE
+ORDER RANK LIMIT
+UNION SPLIT
+```
+
+##### Diagnostics
+
+```pig
+DESCRIBE
+EXPLAIN
+ILLUSTRATE
+```
+
+##### UDF's
+
+```pig
+REGISTER
+DEFINE
+IMPORT
+```
+
+##### Other functions and loaders
+
+```pig
+AVG CONCAT COUNT MAX MIN SIZE SUM
+PigStorage
+TextLoader
+JsonLoader
+AvroLoader
+ParquetLoader
+OrcStorage
+HBaseStorage
+```
+
