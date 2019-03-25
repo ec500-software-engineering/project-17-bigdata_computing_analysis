@@ -63,6 +63,16 @@ To set the delimiter to "124 |", and then upload u.item, call the table movie_na
 
 Choose the query tab, you can find the dataset uploaded in the leftside, and in the query editor you can add sql language, eg.
 
+```sql
+SELECT movie_id, count(movie_id) as ratingCount
+FROM ratings 
+GROUP BY movie_id
+ORDER BY ratingCount
+DESC;
+```
+
+
+
 ![ambari_query_ui](https://github.com/ec500-software-engineering/project-bigdata_computing_analysis/blob/master/documentation/sprint1/query_gui.png)
 
 #### Visualization
