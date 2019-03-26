@@ -24,7 +24,7 @@ https://github.com/ec500-software-engineering/project-bigdata_computing_analysis
 
 ## Architecture
 
-![Structure](https://github.com/ec500-software-engineering/project-bigdata_computing_analysis/blob/master/documentation/readme/structure.jpg)
+![Structure](https://github.com/ec500-software-engineering/project-bigdata_computing_analysis/blob/master/documentation/readme/structure.png)
 
 
 ## Sprint 1

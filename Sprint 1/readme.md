@@ -333,3 +333,18 @@ OrcStorage
 HBaseStorage
 ```
 
+### Spark
+
+- A fast and general engine for large-scale data processing
+- Run programs up to 100x faster than Hadoop MapReduce in memory, or 10x faster on disk
+- DAG Engine(directed acyclic graph) optimizes workflows
+- Code in Python, Java or Scala
+- Buuilt around one main concept: the Resilient Distributed Dataset
+
+#### Components of Spark
+
+- Spark Streaming
+- Spark SQL
+- MLLib
+- GraphX
+- SPARK CORE
