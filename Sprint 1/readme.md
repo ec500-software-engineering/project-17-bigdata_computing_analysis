@@ -335,6 +335,8 @@ HBaseStorage
 
 ### Spark
 
+Apache Spark is an open-source distributed general-purpose cluster-computing framework. Originally developed at the University of California, Berkeley's AMPLab, the Spark codebase was later donated to the Apache Software Foundation, which has maintained it since.
+
 - A fast and general engine for large-scale data processing
 - Run programs up to 100x faster than Hadoop MapReduce in memory, or 10x faster on disk
 - DAG Engine(directed acyclic graph) optimizes workflows
@@ -348,3 +350,24 @@ HBaseStorage
 - MLLib
 - GraphX
 - SPARK CORE
+
+### Hive
+
+Apache Hive is a data warehouse software project built on top of Apache Hadoop for providing data query and analysis. Hive gives a SQL-like interface to query data stored in various databases and file systems that integrate with Hadoop. 
+
+#### Why Hive?
+
+- Uses familiar SQL syntax (HiveQL)
+- Interactive
+- Scalable-works with "big data" on a cluster: really most appropriate for data warehouse applications
+- Easy OLAP(Online Analytical Processing) queries - WAY easier than writing MapReduce in Java
+- Highly optimized
+- Highly extensivle: User defined functions / Thrift server / JDBC&ODBC driver
+
+#### Why not Hive?
+
+- High latency - not appropriate for OLTP  (online transaction processing) 
+- Stores data de-normalized
+- SQL is limited in what it can do (Pig, Spark allows more complex stuff)
+- No transactions
+- Node record-level updates, inserts, deletes
