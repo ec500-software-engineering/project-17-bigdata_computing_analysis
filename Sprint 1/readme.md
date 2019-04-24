@@ -351,6 +351,19 @@ Apache Spark is an open-source distributed general-purpose cluster-computing fra
 - GraphX
 - SPARK CORE
 
+#### RDD
+
+- Resilient
+- Distributed
+- Dataset
+
+#### The SparkContext
+
+- Created by your driver program
+- is responsible for making RDD's resilient and distributed
+- creates RDD's
+- The Spark shell creates a "sc" object for you
+
 ### Hive
 
 Apache Hive is a data warehouse software project built on top of Apache Hadoop for providing data query and analysis. Hive gives a SQL-like interface to query data stored in various databases and file systems that integrate with Hadoop. 
