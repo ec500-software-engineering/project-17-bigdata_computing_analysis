@@ -74,13 +74,19 @@ cd /usr/hdp/current/kafka-broker/bin/
 
 Then the information is consumed. Then all the information will become real-time. What should be noticed is that the Kafka can store the information for some time.
 
-# Project 
+## Flume
+
+### What is Flume
+
+- Another way to stream data into your cluster
+- Made from the start with Hadoop in mind (Built in sink for HDFS and HBase)
+- Originally made to handle log aggregation
+
+# Project - Market Trend 
 
 ## Kafka System 
 
 As what we wrote in the user story, this system will be desgined for a market owner who want to check the trend in different products. 
-
-### Create Producer
 
 Consider the first number as Merchandise_id(0-200), the second number as Customer_id(0-20000), write a Java file to write a text stream:
 
@@ -123,3 +129,26 @@ public class Producer {
 ```
 
 Put the Java file into the HDP, compile and run the java file. The log file will be generated named "samplelog.txt"
+
+Copy three kafka settings file from /usr/hdp/current/kafka-broker/bin to ~/kafka_settings:
+
+- connect-standalone.properties
+- connect-file-sink.properties
+- connect-file-source.properties
+
+Change the filename in source to samplelog.txt, change topic to EC500, and change the host name to HDP's name
+
+Go back to kafka's folder, use the command to start consumer:
+
+```shell
+./kafka-console-consumer.sh --bootstrap-server sandbox.hortonworks:6667 --topic ec500 --zookeeper:2181
+zookeeper:2181 is not a recognized option
+```
+
+Use the command to start producer:
+
+```shell
+./connect-standalone.sh ~/kafka_settings/connect-standalone.properties ~/kafka_settings/connect-file-source.properties ~/kafka_settings/connect-file-sink.properties
+```
+
+And then you can see the information from the consumer side
