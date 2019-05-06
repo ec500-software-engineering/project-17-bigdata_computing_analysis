@@ -1,12 +1,12 @@
 [TOC]
 
-<b><em>The first part is all about introduction of Hadoop or relative techniques. The second part is about our porject's detail information.</em></b>
+<b>The first part is all about introduction of Hadoop or relative techniques. The second part is about our porject's detail information.</b>
 
 # BigData Introduction
 
 ## Structure
 
-Java input stream to Text file -> Kafka -> Flume -> HDFS -> Pig -> HBase
+Java input stream -> Text file -> Kafka -> Flume -> HDFS -> Pig -> HBase
 
 ## Kafka
 
@@ -85,6 +85,39 @@ Then the information is consumed. Then all the information will become real-time
 - Another way to stream data into your cluster
 - Made from the start with Hadoop in mind (Built in sink for HDFS and HBase)
 - Originally made to handle log aggregation
+
+Flume lets Hadoop users ingest high-volume streaming data into HDFS for storage. Specifically, Flume allows users to:
+
+|         Feature         |                         Description                          |
+| :---------------------: | :----------------------------------------------------------: |
+|       Stream data       | Ingest streaming data from multiple sources into Hadoop for storage and analysis |
+|    Insulate systems     | Buffer storage platform from transient spikes, when the rate of incoming data exceeds the rate at which data can be written to the destination |
+| Guarantee data delivery | Flume NG uses channel-based transactions to guarantee reliable message delivery. When a message moves from one agent to another, two transactions are started, one on the agent that delivers the event and the other on the agent that receives the event. This ensures guaranteed delivery semantics |
+|   Scale horizontally    |  To ingest new data streams and additional volume as needed  |
+
+Enterprises use Flume’s powerful streaming capabilities to land data from high-throughput streams in the [Hadoop Distributed File System (HDFS)](https://hortonworks.com/hadoop/hdfs/). Typical sources of these streams are application logs, sensor and machine data, geo-location data and social media. These different types of data can be landed in Hadoop for future analysis using interactive queries in Apache Hive. Or they can feed business dashboards served ongoing data by Apache HBase.
+
+In one specific example, Flume is used to log manufacturing operations. When one run of product comes off the line, it generates a log file about that run. Even if this occurs hundreds or thousands of times per day, the large volume log file data can stream through Flume into a tool for same-day analysis with Apache Storm or months or years of production runs can be stored in HDFS and analyzed by a quality assurance engineer using Apache Hive.
+
+![flume](https://github.com/ec500-software-engineering/project-bigdata_computing_analysis/blob/master/documentation/final/flume.png)
+
+### Components of an agent
+
+1. Source
+
+- Where data is coming from
+- Can optionally have Channel Selectors and Interceptors
+
+2. Channel
+
+- How the data is transferred(via memory or files)
+
+3. Sink
+
+- Where the data is going 
+- Can be organized into Sink Groups
+- A sink can connect to only one channel
+- Channel is notified to delete a message once the sink processes it
 
 # Project - Market Trend 
 
