@@ -70,6 +70,6 @@ cd /usr/hdp/current/kafka-broker/bin/
 ./kafka-console-consumer.sh --bootstrap-server sandbox.hotonworks.com:6667 --zookeeper localhost:2181 --topic ec500 --from-beginning
 ```
 
-![Kafka_consumer](https://github.com/ec500-software-engineering/project-bigdata_computing_analysis/blob/master/documentation/final/kafka-consumer.png)
+![Kafka_consumer](https://github.com/ec500-software-engineering/project-bigdata_computing_analysis/blob/master/documentation/final/kafka_consumer.png)
 
 Then the information is consumed. Then all the information will become real-time. What should be noticed is that the Kafka can store the information for some time.
