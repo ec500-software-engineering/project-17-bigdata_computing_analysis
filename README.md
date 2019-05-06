@@ -2,6 +2,12 @@
 
 [![Build Status](https://travis-ci.com/ec500-software-engineering/project-17-bigdata_computing_analysis.svg?branch=master)](https://travis-ci.com/ec500-software-engineering/project-17-bigdata_computing_analysis)
 
+## Final:
+
+Please Read the final.md for the final result.
+
+https://github.com/ec500-software-engineering/project-bigdata_computing_analysis/blob/master/final.md
+
 ## Sprint 1:
 
 https://github.com/ec500-software-engineering/project-bigdata_computing_analysis/blob/master/Sprint%201/readme.md
