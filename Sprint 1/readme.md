@@ -55,7 +55,7 @@ We can try to use the Hive View function (from the grid image in the top bar, ri
 
 ![ambari_upload_gui](https://github.com/ec500-software-engineering/project-bigdata_computing_analysis/blob/master/documentation/sprint1/upload_gui.png)
 
-To set the delimiter to "124 |", and then upload u.item (`wget http://media.sundog-soft.com/hadoop/ml-100k/u.item` or in the above directory), call the table movie_names, set colums to movie_id and name
+Next, set the delimiter to "124 |" as done previosuly, and then upload u.item (`wget http://media.sundog-soft.com/hadoop/ml-100k/u.item` or in the above directory), call the table movie_names, set colums to movie_id and name
 
 ![ambari_upload_gui1](https://github.com/ec500-software-engineering/project-bigdata_computing_analysis/blob/master/documentation/sprint1/upload_gui1.png)
 
