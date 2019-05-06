@@ -51,11 +51,11 @@ This is not the reset for the password of the virtual machine! This is only the 
 
 #### Built in upload function
 
-We can try to use the Hive View function (from the grid image in the top bar, right corner) and choose the upload file, in the settings we choose field delimiter as 9 TAB(horizontal tab), and then we choose the local file u.data (refer to the `Simple MapReduce Example` below, or the above directory), set the table name as "ratings", each column as "user_id", "movie_id", "rating" and "rating_time"
+We can try to use the Hive View function (from the grid image in the top bar, right corner) and choose the upload file, from the settings wheel we choose field delimiter as 9 TAB(horizontal tab) from the dropdown, and then we choose the local file u.data (refer to the `Simple MapReduce Example` below, or the above directory), set the table name as "ratings", each column as "user_id", "movie_id", "rating" and "rating_time"
 
 ![ambari_upload_gui](https://github.com/ec500-software-engineering/project-bigdata_computing_analysis/blob/master/documentation/sprint1/upload_gui.png)
 
-To set the delimiter to "124 |", and then upload u.item, call the table movie_names, set colums to movie_id and name
+To set the delimiter to "124 |", and then upload u.item (`wget http://media.sundog-soft.com/hadoop/ml-100k/u.item` or in the above directory), call the table movie_names, set colums to movie_id and name
 
 ![ambari_upload_gui1](https://github.com/ec500-software-engineering/project-bigdata_computing_analysis/blob/master/documentation/sprint1/upload_gui1.png)
 
