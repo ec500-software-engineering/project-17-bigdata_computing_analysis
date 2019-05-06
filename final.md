@@ -1,8 +1,8 @@
-# BigData Project
+# BigData Introduction
 
 ## Structure
 
-Kafka -> Flume -> HDFS -> Pig -> HBase
+Java input stream to Text file -> Kafka -> Flume -> HDFS -> Pig -> HBase
 
 ## Kafka
 
@@ -73,3 +73,53 @@ cd /usr/hdp/current/kafka-broker/bin/
 ![Kafka_consumer](https://github.com/ec500-software-engineering/project-bigdata_computing_analysis/blob/master/documentation/final/kafka_consumer.png)
 
 Then the information is consumed. Then all the information will become real-time. What should be noticed is that the Kafka can store the information for some time.
+
+# Project 
+
+## Kafka System 
+
+As what we wrote in the user story, this system will be desgined for a market owner who want to check the trend in different products. 
+
+### Create Producer
+
+Consider the first number as Merchandise_id(0-200), the second number as Customer_id(0-20000), write a Java file to write a text stream:
+
+```java
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.io.*;
+
+public class Producer {
+
+	public static void main(String[] args) throws IOException {
+		String path = "samplelog.txt";
+		File file = new File(path);
+		if(!file.exists()){
+			file.createNewFile();
+		}
+		class Output extends TimerTask  {
+			public void run()  {
+				int product = (int)(Math.random()*200);
+				int user = (int)(Math.random()*20000);
+				StringBuilder sb = new StringBuilder();
+				sb.append(product);
+				sb.append(" ");
+				sb.append(user);
+				try{
+					FileWriter fileWriter = new FileWriter("samplelog.txt",true);
+					fileWriter.write(sb.toString()+"\n");
+					fileWriter.close();
+				}catch(Exception e){
+					e.printStackTrace();
+				}
+			}
+		}
+		Timer timer = new Timer();
+		timer.schedule(new Output(), 0, 1000);
+	}
+}
+```
+
+Put the Java file into the HDP, compile and run the java file. The log file will be generated named "samplelog.txt"
