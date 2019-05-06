@@ -1,6 +1,6 @@
 [TOC]
 
-<em>The first part is all about introduction of Hadoop or relative techniques. The second part is about our porject's detail information.</em>
+<b><em>The first part is all about introduction of Hadoop or relative techniques. The second part is about our porject's detail information.</em></b>
 
 # BigData Introduction
 
