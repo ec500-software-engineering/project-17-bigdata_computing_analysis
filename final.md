@@ -133,10 +133,9 @@ Consider the first number as Merchandise_id(0-200), the second number as Custome
 
 ```java
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 import java.io.*;
+import java.text.*;
 
 public class Producer {
 
@@ -148,9 +147,13 @@ public class Producer {
 		}
 		class Output extends TimerTask  {
 			public void run()  {
+				DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
+				Date dateobj = new Date();
 				int product = (int)(Math.random()*200);
 				int user = (int)(Math.random()*20000);
 				StringBuilder sb = new StringBuilder();
+				sb.append(df.format(dateobj));
+				sb.append(" ");
 				sb.append(product);
 				sb.append(" ");
 				sb.append(user);
@@ -179,16 +182,54 @@ Copy three kafka settings file from /usr/hdp/current/kafka-broker/bin to ~/kafka
 
 Change the filename in source to samplelog.txt, change topic to EC500, and change the host name to HDP's name
 
-Go back to kafka's folder, use the command to start consumer:
-
-```shell
-./kafka-console-consumer.sh --bootstrap-server sandbox.hortonworks:6667 --topic ec500 --zookeeper localhost:2181
-```
-
 Use the command to start producer:
 
 ```shell
 ./connect-standalone.sh ~/kafka_settings/connect-standalone.properties ~/kafka_settings/connect-file-source.properties ~/kafka_settings/connect-file-sink.properties
 ```
 
+Go back to kafka's folder, use the command to start consumer:
+
+```shell
+./kafka-console-consumer.sh --bootstrap-server sandbox.hortonworks:6667 --topic ec500 --zookeeper localhost:2181
+```
+
 And then you can see the information from the consumer side
+
+## Flume System
+
+After the information has been delivered by Kafka, the flume will handle the process later on. It will help us store the information into the HDFS
+
+Set the conf as 
+
+```shell
+a1.sources = r1
+a1.sinks = k1
+a1.channels = c1
+
+# Describe/configure the source
+a1.sources.r1.type = exec
+a1.sources.r1.command=tail -F /home/maria_dev/kafka_settings/samplelog.txt
+
+# Describe the sink
+a1.sinks.k1.type = hdfs
+#a1.sinks.k1.hdfs.path = /user/maria_dev/flume/events/%y-%m-%d/%H%M/%S
+a1.sinks.k1.hdfs.path = /user/maria_dev/flume/events/
+
+# Use a channel which buffers events in memory
+a1.channels.c1.type = memory
+a1.channels.c1.capacity = 1000
+a1.channels.c1.transactionCapacity = 100
+
+# Bind the source and sink to the channel
+a1.sources.r1.channels = c1
+a1.sinks.k1.channel = c1
+```
+
+Run the flume using the command:
+
+```
+bin/flume-ng agent --conf conf --conf-file ~/flume_settings/flconf.conf --name a1 -Dflume.root.logger=INFO,c
+onsole
+```
+
