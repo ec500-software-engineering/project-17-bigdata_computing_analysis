@@ -227,7 +227,7 @@ And then you can see the information from the consumer side
 
 After the information has been delivered by Kafka, the flume will handle the process later on. It will help us store the information into the HDFS
 
-Set the conf as 
+Set the config file as: 
 
 ```shell
 a1.sources = r1
@@ -266,7 +266,7 @@ onsole
 
 ![structure](https://github.com/ec500-software-engineering/project-bigdata_computing_analysis/blob/master/documentation/final/structure.png)
 
-conf for flume:
+Config for flume, copy into the appropriate file in your path:
 
 ```shell
 # sparkstreamingflume.conf: A single-node Flume configuration
@@ -298,7 +298,7 @@ a1.sources.r1.channels = c1
 a1.sinks.k1.channel = c1
 ```
 
-the spark script
+The Spark script, in Python:
 
 ```python
 import re
