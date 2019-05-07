@@ -353,3 +353,22 @@ if __name__ == "__main__":
     ssc.awaitTermination()
 ```
 
+then we use the command to create the checkpoint folder first
+
+```shell
+mkdir checkpoint
+```
+
+To make sure you are using the spark 2, do
+
+```shell
+export SPARK_MAJOR_VERSION=2
+spark-submit --packages org.apache.spark:spark-streaming-flume_2.11:2.0.0 SparkFlume.py
+```
+
+Then we should start our flume
+
+```shell
+bin/flume-ng agent --conf conf --conf-file ~/flume_settings/sparkstreamingflume.conf --name a1
+```
+
