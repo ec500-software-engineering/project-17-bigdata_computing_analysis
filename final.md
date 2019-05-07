@@ -250,4 +250,4 @@ onsole
 
 ## Spark Streaming
 
-### 
+![spark](https://github.com/ec500-software-engineering/project-bigdata_computing_analysis/blob/master/documentation/final/spark.png)
