@@ -59,7 +59,11 @@ The path of Kafka in HDP2.5 is /usr/hdp/current/kafka-broker/,
 
 ```bash
 cd /usr/hdp/current/kafka-broker/bin
+
 ./kafka-topics.sh --create --zookeeper sandbox.hortonworks.com:2181 --replication-factor 1 --partitions 1 --topic ec500
+
+./kafka-topics.sh --list --zookeeper sandbox.hortonworks.com:2181
+
 ./kafka-console-producer.sh --broker-list sandbox.hortonworks.com:6667 --topic ec500
 ```
 
@@ -178,8 +182,7 @@ Change the filename in source to samplelog.txt, change topic to EC500, and chang
 Go back to kafka's folder, use the command to start consumer:
 
 ```shell
-./kafka-console-consumer.sh --bootstrap-server sandbox.hortonworks:6667 --topic ec500 --zookeeper:2181
-zookeeper:2181 is not a recognized option
+./kafka-console-consumer.sh --bootstrap-server sandbox.hortonworks:6667 --topic ec500 --zookeeper localhost:2181
 ```
 
 Use the command to start producer:
