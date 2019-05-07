@@ -4,10 +4,6 @@
 
 # BigData Introduction
 
-## Structure
-
-Java input stream -> Text file -> Kafka -> Flume -> HDFS -> Pig -> HBase
-
 ## Kafka
 
 ### Intro Kafka
@@ -144,6 +140,16 @@ This guide shows each of these features in each of Spark’s supported languages
 - can be transformed and acted on in much the same as RDD's
 - Or you can access their underlying RDD's if you need them
 
+### Windowed Transformations
+
+- Allow you to compute results across a longer time period than your batch interval
+
+#### Batch Interval vs Slide Interval vs Window Interval
+
+- the batch interval is how often data is captured into a Dstream
+- the slide interval is how often a windowed tranformation is computed
+- the window interval is how far back in time the windowed transformations goes
+
 # Project - Market Trend 
 
 ## Kafka System 
@@ -257,3 +263,93 @@ onsole
 ## Spark Streaming
 
 ![spark](https://github.com/ec500-software-engineering/project-bigdata_computing_analysis/blob/master/documentation/final/spark.png)
+
+![structure](https://github.com/ec500-software-engineering/project-bigdata_computing_analysis/blob/master/documentation/final/structure.png)
+
+conf for flume:
+
+```shell
+# sparkstreamingflume.conf: A single-node Flume configuration
+
+# Name the components on this agent
+a1.sources = r1
+a1.sinks = k1
+a1.channels = c1
+
+# Describe/configure the source
+a1.sources.r1.type = spooldir
+a1.sources.r1.spoolDir = /home/maria_dev/spool
+a1.sources.r1.fileHeader = true
+a1.sources.r1.interceptors = timestampInterceptor
+a1.sources.r1.interceptors.timestampInterceptor.type = timestamp
+
+# Describe the sink
+a1.sinks.k1.type = avro
+a1.sinks.k1.hostname = localhost
+a1.sinks.k1.port = 9092
+
+# Use a channel which buffers events in memory
+a1.channels.c1.type = memory
+a1.channels.c1.capacity = 1000
+a1.channels.c1.transactionCapacity = 100
+
+# Bind the source and sink to the channel
+a1.sources.r1.channels = c1
+a1.sinks.k1.channel = c1
+```
+
+the spark script
+
+```python
+import re
+
+from pyspark import SparkContext
+from pyspark.streaming import StreamingContext
+from pyspark.streaming.flume import FlumeUtils
+
+parts = [
+    r'(?P<host>\S+)',                   # host %h
+    r'\S+',                             # indent %l (unused)
+    r'(?P<user>\S+)',                   # user %u
+    r'\[(?P<time>.+)\]',                # time %t
+    r'"(?P<request>.+)"',               # request "%r"
+    r'(?P<status>[0-9]+)',              # status %>s
+    r'(?P<size>\S+)',                   # size %b (careful, can be '-')
+    r'"(?P<referer>.*)"',               # referer "%{Referer}i"
+    r'"(?P<agent>.*)"',                 # user agent "%{User-agent}i"
+]
+pattern = re.compile(r'\s+'.join(parts)+r'\s*\Z')
+
+def extractURLRequest(line):
+    exp = pattern.match(line)
+    if exp:
+        request = exp.groupdict()["request"]
+        if request:
+           requestFields = request.split()
+           if (len(requestFields) > 1):
+                return requestFields[1]
+
+
+if __name__ == "__main__":
+
+    sc = SparkContext(appName="StreamingFlumeLogAggregator")
+    sc.setLogLevel("ERROR")
+    ssc = StreamingContext(sc, 1)
+
+    flumeStream = FlumeUtils.createStream(ssc, "localhost", 9092)
+
+    lines = flumeStream.map(lambda x: x[1])
+    urls = lines.map(extractURLRequest)
+
+    # Reduce by URL over a 5-minute window sliding every second
+    urlCounts = urls.map(lambda x: (x, 1)).reduceByKeyAndWindow(lambda x, y: x + y, lambda x, y : x - y, 300, 1)
+
+    # Sort and print the results
+    sortedResults = urlCounts.transform(lambda rdd: rdd.sortBy(lambda x: x[1], False))
+    sortedResults.pprint()
+
+    ssc.checkpoint("/home/maria_dev/checkpoint")
+    ssc.start()
+    ssc.awaitTermination()
+```
+
