@@ -138,6 +138,12 @@ A second abstraction in Spark is *shared variables* that can be used in parallel
 
 This guide shows each of these features in each of Spark’s supported languages. It is easiest to follow along with if you launch Spark’s interactive shell – either `bin/spark-shell` for the Scala shell or `bin/pyspark` for the Python one.
 
+### DStreams
+
+- generates the RDD's for each time step, and can produce output aat each time step
+- can be transformed and acted on in much the same as RDD's
+- Or you can access their underlying RDD's if you need them
+
 # Project - Market Trend 
 
 ## Kafka System 
