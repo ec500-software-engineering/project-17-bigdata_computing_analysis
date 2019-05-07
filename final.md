@@ -123,6 +123,15 @@ In one specific example, Flume is used to log manufacturing operations. When one
 - A sink can connect to only one channel
 - Channel is notified to delete a message once the sink processes it
 
+## Spark
+
+### Why Spark Streaming?
+
+- Analyze data streams in real time, instead of in huge batch jobs daily
+- Analyzing streams of web log data to react to user behavior
+- Analyze streams of real-time sensor data for "Internet of Things" stuff
+- Processing of RDD's can happen in parallel on different worker nodes
+
 # Project - Market Trend 
 
 ## Kafka System 
@@ -233,3 +242,6 @@ bin/flume-ng agent --conf conf --conf-file ~/flume_settings/flconf.conf --name a
 onsole
 ```
 
+## Spark Streaming
+
+### 
